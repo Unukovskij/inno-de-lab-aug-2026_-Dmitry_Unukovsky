@@ -1,8 +1,3 @@
-
-```sql
-
-
-
 -- Part 4: ORDER BY
 
 -- Task 1
@@ -13,7 +8,3 @@ SELECT
 	age
 FROM Customers
 ORDER BY age DESC;
-
-
-
-```

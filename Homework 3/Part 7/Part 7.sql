@@ -1,8 +1,3 @@
-
-```sql
-
-
-
 -- Part 7
 
 -- Task 1
@@ -39,7 +34,3 @@ FROM Customers c
 INNER JOIN customer_orders co ON c.customer_id = co.customer_id
 INNER JOIN customer_delivered cd ON c.customer_id = cd.customer
 ORDER BY total_amount DESC;
-
-
-
-```

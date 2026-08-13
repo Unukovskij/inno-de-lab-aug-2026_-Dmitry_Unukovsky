@@ -1,8 +1,3 @@
-
-```sql
-
-
-
 -- Part 6: WINDOW FUNCTIONS
 
 -- Task 1
@@ -16,7 +11,3 @@ SELECT
     SUM(amount) OVER (PARTITION BY customer_id) AS total_by_customer
 FROM Orders
 ORDER BY order_id;
-
-
-
-```

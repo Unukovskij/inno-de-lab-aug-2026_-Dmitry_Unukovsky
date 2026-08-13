@@ -1,8 +1,3 @@
-
-```sql
-
-
-
 -- Part 5: SUBQUERIES
 
 -- Task 1
@@ -15,7 +10,3 @@ SELECT
 FROM Customers
 JOIN Orders ON Customers.customer_id = Orders.customer_id
 WHERE Orders.amount = (SELECT MAX(amount) FROM Orders);
-
-
-
-```
