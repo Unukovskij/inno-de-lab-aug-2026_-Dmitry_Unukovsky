@@ -3,7 +3,7 @@
 --action1
 INSERT INTO Employees (FirstName, LastName, Department, Salary)
 VALUES
-	('Danil', 'Kozlov', 'HR', 65000.00)
+	('Danil', 'Kozlov', 'HR', 65000.00),
 	('Max', 'Loginov', 'Finance', 71000.00);
 
 --action2

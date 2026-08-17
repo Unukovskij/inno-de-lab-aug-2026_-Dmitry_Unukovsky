@@ -16,6 +16,9 @@ VALUES ('Test', 'User', 'HR', 50000.00);
 --action4
 GRANT INSERT, UPDATE ON Employees TO hr_user;
 
+--дал права на последовательность
+GRANT USAGE, SELECT ON SEQUENCE employees_employeeid_seq TO hr_user;
+
 --action5
 INSERT INTO Employees (FirstName, LastName, Department, Salary)
 VALUES ('Test', 'User', 'HR', 50000.00);
