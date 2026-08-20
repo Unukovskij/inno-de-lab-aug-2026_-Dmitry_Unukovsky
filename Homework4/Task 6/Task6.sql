@@ -11,10 +11,22 @@ WHERE Employees.FirstName = 'Bob'
 
 --action2
 
---добавил тестового сотрудника на проект
+--добавил тестового сотрудника на проект, я понял почему не надо привязываться к конекретному ID, но я для дз так сделал ибо знал что он точно есть
 insert into EmployeeProjects (EmployeeID, ProjectID, HoursWorked)
 values (10,(select ProjectID from Projects where ProjectName = 'Website Redesign'),100);
 
+
+--Исправил
+INSERT INTO EmployeeProjects (EmployeeID, ProjectID, HoursWorked)
+SELECT 
+    (SELECT EmployeeID FROM Employees WHERE FirstName = 'Test' AND LastName = 'User'),
+    (SELECT ProjectID FROM Projects WHERE ProjectName = 'Website Redesign'),100
+WHERE EXISTS (
+    SELECT 1 FROM Employees WHERE FirstName = 'Test' AND LastName = 'User'
+);
+
+
+--увеличение budget на 10 процентов
 UPDATE Projects
 SET Budget = Budget * 1.10
 WHERE EXISTS (
@@ -37,15 +49,18 @@ WHERE EndDate IS NULL;
 
 --action4
 BEGIN;
+
+--Исправил
+WITH new_employee AS (
 INSERT INTO Employees (FirstName, LastName, Department, Salary, Email)
 VALUES ('Olga', 'Sokolova', 'Marketing', 50000.00, 'olga.sokolova@company.com')
-RETURNING EmployeeID;
+RETURNING EmployeeID
+)
 INSERT INTO EmployeeProjects (EmployeeID, ProjectID, HoursWorked)
-VALUES (
-    (SELECT EmployeeID FROM Employees WHERE FirstName = 'Olga' AND LastName = 'Sokolova'),
-    (SELECT ProjectID FROM Projects WHERE ProjectName = 'Website Redesign'),
-    80
-);
+SELECT 
+    EmployeeID,
+    (SELECT ProjectID FROM Projects WHERE ProjectName = 'Website Redesign'),80
+FROM new_employee;
 COMMIT;
 
 -- Проверка
