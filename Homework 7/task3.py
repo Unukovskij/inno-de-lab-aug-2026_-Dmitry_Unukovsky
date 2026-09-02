@@ -16,7 +16,7 @@ host = connection.get("host", "localhost")
 port = connection.get("port", 5432)
 
 # Проверяю наличие ssl_settings
-ssl_settings = connection.get("ssl_settings", {})
+ssl_settings = db_config.get("ssl_settings", {}) #Изменил connection на db_config
 ssl_mode = ssl_settings.get("ssl_mode", "verify-full")
 
 # Меняю user на admin
