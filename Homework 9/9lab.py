@@ -4,7 +4,7 @@ class Trainee:
         self.name: str = name
         self.surname: str = surname
         self.passing_grade: int = passing_grade
-        self.__score: int = score
+        self.score = score #Исправил
 
     @property
     def score(self) -> int:
@@ -12,7 +12,7 @@ class Trainee:
 
     @score.setter
     def score(self, value: int) -> None:
-        if not isinstance(value, int):
+        if type(value) is not int: #Исправил
             raise ValueError(f"Expected value of type int, got {type(value)}")
         if value < 0:
             raise ValueError("The score shouldn't be less than 0!")
